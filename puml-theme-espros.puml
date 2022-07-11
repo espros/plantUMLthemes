@@ -1,0 +1,557 @@
+''
+'' espros theme based off plantuml superhero theme
+''
+'' modified by RCS
+''
+
+!$THEME = "espros"
+
+!if %not(%variable_exists("$BGCOLOR"))
+!$BGCOLOR = "transparent"
+!endif
+
+skinparam backgroundColor $BGCOLOR
+skinparam useBetaStyle false
+
+''
+'' Espros Colors taken from EPR 5.1
+''
+!$EPC_WHITE = "#f8f7f6"
+!$EPC_LIGHTGRAY = "#ebe9ea"
+!$EPC_GRAY = "#d9d9d8"
+!$EPC_DARKGRAY = "#878786"
+!$EPC_LIGHTBLUE = "#69bee7"
+!$EPC_TURQUOISE = "#21bfd9"
+!$EPC_MEDIUMBLUE = "#009cc8"
+!$EPC_DARKBLUE = "#005a8a"
+!$EPC_YELLOW = "#fbd000"
+!$EPC_ORANGE = "#f28c24"
+
+
+!$WHITE = $EPC_WHITE
+!$BLACK = "#0"
+!$RED = "#e03319"
+!$GREEN = "##1eb510"
+
+''arrows
+!$PRIMARY = $EPC_DARKGRAY
+''nothing
+!$SECONDARY = $EPC_LIGHTBLUE
+''nothing
+!$SUCCESS = $GREEN
+!$INFO = $EPC_MEDIUMBLUE
+!$WARNING = $EPC_YELLOW
+!$DANGER = $EPC_ORANGE
+!$DARK = $EPC_DARKBLUE
+!$LIGHT = $EPC_WHITE
+
+''text
+!$FGCOLOR = $BLACK
+''start circle
+!$PRIMARY_DARK = $BLACK
+'' state boxes
+!$PRIMARY_LIGHT = $WHITE
+!$PRIMARY_TEXT = $BLACK
+''decision box borders
+!$SECONDARY_DARK = $EPC_TURQUOISE
+''decision boxes
+!$SECONDARY_LIGHT = $EPC_LIGHTBLUE
+''text in boxes
+!$SECONDARY_TEXT = $BLACK
+!$INFO_DARK = $EPC_DARKBLUE
+!$INFO_LIGHT = $EPC_MEDIUMBLUE
+!$INFO_TEXT = $BLACK
+!$SUCCESS_DARK = $BLACK
+!$SUCCESS_LIGHT = $BLACK
+!$SUCCESS_TEXT = $BLACK
+!$WARNING_DARK = $EPC_ORANGE
+!$WARNING_LIGHT = $EPC_YELLOW
+!$WARNING_TEXT = $BLACK
+!$DANGER_DARK = $RED
+!$DANGER_LIGHT = $RED
+!$DANGER_TEXT = $BLACK
+!$DARK_DARK = $EPC_DARKGRAY
+!$DARK_LIGHT = $EPC_DARKGRAY
+!$LIGHT_DARK = $EPC_GRAY
+!$LIGHT_LIGHT = $EPC_GRAY
+
+!procedure $success($msg)
+  <font color=$SUCCESS><b>$msg
+!endprocedure
+
+!procedure $failure($msg)
+  <font color=$DANGER><b>$msg
+!endprocedure
+
+!procedure $warning($msg)
+  <font color=$WARNING><b>$msg
+!endprocedure
+
+!procedure $primary_scheme()
+	FontColor $PRIMARY_TEXT
+	BorderColor $PRIMARY
+	BackgroundColor $PRIMARY_LIGHT
+!endprocedure
+''
+'' Style settings
+''
+<style>
+  root {
+    BackgroundColor $BGCOLOR
+    FontColor $PRIMARY_TEXT
+    HyperLinkColor $EPC_ORANGE
+    LineColor $PRIMARY_DARK
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 10
+   BackgroundColor $PRIMARY-$PRIMARY_DARK
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor $SECONDARY
+    FontColor $INFO
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor $BGCOLOR
+    FontColor $DARK
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor $FGCOLOR
+    FontColor $BGCOLOR
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  $EPC_WHITE
+	FontColor "#0"
+	BorderColor $EPC_WHITE
+  }
+  nwdiagDiagram {
+	network {
+		$primary_scheme()    
+		LineColor $PRIMARY
+		LineThickness 1.0
+		FontColor $PRIMARY_DARK
+	}
+	server {
+		$primary_scheme()
+	}
+	arrow {
+		FontColor $PRIMARY_DARK
+		LineColor $PRIMARY_DARK
+	}
+	group {
+		BackGroundColor $LIGHT
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+		$primary_scheme()
+		LineColor $PRIMARY
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor $INFO_TEXT
+		LineColor $INFO_DARK
+		BackGroundColor $INFO
+	}
+	separator {
+		LineColor $SECONDARY
+		BackGroundColor $SECONDARY-$SECONDARY_DARK
+		FontColor $SECONDARY_TEXT
+	}
+	milestone {
+		FontColor $INFO
+		FontSize 16
+		FontStyle italic
+		BackGroundColor $SECONDARY
+		LineColor $SECONDARY_DARK
+	}
+	timeline {
+		BackgroundColor $SECONDARY
+		FontColor $SECONDARY_TEXT
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor $WARNING_TEXT
+	}
+  }
+</style>
+''
+'' Global Default Values
+''
+skinparam defaultFontName       "Franklin Gothic Heavy"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            $DARK
+skinparam stereotype {
+    CBackgroundColor $SECONDARY_LIGHT
+    CBorderColor $SECONDARY_DARK
+    ABackgroundColor $SUCCESS_LIGHT
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor $DANGER_LIGHT
+    IBorderColor $DANGER_DARK
+    EBackgroundColor $WARNING_LIGHT
+    EBorderColor $WARNING_DARK
+    NBackgroundColor $INFO_LIGHT
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 $EPC_WHITE
+	BorderColor	                 $EPC_WHITE
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              $EPC_LIGHTBLUE
+}
+
+skinparam legend {
+	BackgroundColor $SECONDARY
+	BorderColor $SECONDARY_DARK
+	FontColor $LIGHT
+}
+
+!startsub swimlane
+skinparam swimlane {
+	BorderColor $INFO
+	BorderThickness 2
+	TitleBackgroundColor  $SECONDARY_LIGHT-$SECONDARY
+	TitleFontColor $PRIMARY
+}
+!endsub
+
+!startsub activity
+
+skinparam activity {
+	$primary_scheme()
+	BarColor $SUCCESS
+	StartColor $INFO
+	EndColor $INFO
+	''
+	DiamondBackgroundColor $SECONDARY_LIGHT
+  	DiamondBorderColor $SECONDARY_DARK
+  	DiamondFontColor $SECONDARY_TEXT
+}
+!endsub
+
+!startsub participant
+
+skinparam participant {
+	$primary_scheme()
+	ParticipantBorderThickness 2
+}
+!endsub
+
+!startsub actor
+
+skinparam actor {
+	$primary_scheme()
+}
+!endsub
+
+!startsub arrow
+
+skinparam arrow {
+	Thickness 3
+	Color $PRIMARY
+	FontColor $FGCOLOR
+}
+!endsub
+
+!startsub sequence
+
+skinparam sequence {
+	BorderColor $PRIMARY
+	' For some reason sequence title font color does not pick up from global
+	TitleFontColor $PRIMARY
+	BackgroundColor $BGCOLOR
+	StartColor $PRIMARY
+	EndColor $PRIMARY
+	''
+	BoxBackgroundColor $BGCOLOR
+	BoxBorderColor $DARK
+	BoxFontColor $DARK
+	''
+	DelayFontColor $DARK
+	''
+	LifeLineBorderColor $SECONDARY
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor $SECONDARY_DARK
+	''
+	GroupBorderColor $DARK
+	GroupFontColor $DARK
+	GroupHeaderFontColor $INFO
+	GroupBackgroundColor $SECONDARY
+	GroupHeaderBackgroundColor $BGCOLOR
+	''
+	DividerBackgroundColor $DARK
+    DividerBorderColor $DARK
+    DividerBorderThickness 2
+    DividerFontColor $LIGHT
+	''
+	ReferenceBackgroundColor $BGCOLOR
+	ReferenceBorderColor $DARK
+	ReferenceFontColor $DARK
+	ReferenceHeaderFontColor $INFO
+	ReferenceHeaderBackgroundColor $SECONDARY
+	''
+	StereotypeFontColor $PRIMARY_TEXT
+}
+!endsub
+
+!startsub partition
+
+skinparam partition {
+	BorderColor $PRIMARY
+	FontColor $PRIMARY
+	BackgroundColor $BGCOLOR
+}
+!endsub
+
+!startsub collections
+
+skinparam collections {
+	$primary_scheme()
+}
+!endsub
+
+!startsub control
+
+skinparam control {
+	$primary_scheme()
+}
+!endsub
+
+!startsub entity
+
+skinparam entity {
+	$primary_scheme()
+}
+!endsub
+
+!startsub boundary
+
+skinparam boundary {
+	$primary_scheme()
+}
+!endsub
+
+!startsub agent
+
+skinparam agent {
+	BackgroundColor $WARNING
+	BorderColor $WARNING_LIGHT
+	FontColor $DARK
+}
+!endsub
+
+!startsub note
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor $INFO
+	BorderColor $INFO_DARK
+	FontColor $WHITE
+}
+!endsub
+
+!startsub artifact
+
+skinparam artifact {
+	BackgroundColor $DARK
+	BorderColor $DARK_DARK
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub component
+
+skinparam component {
+	$primary_scheme()
+}
+!endsub
+
+!startsub interface
+
+skinparam interface {
+	BackgroundColor  $DANGER_DARK
+	BorderColor  $DANGER
+	FontColor $DARK
+}
+!endsub
+
+!startsub storage
+
+skinparam storage {
+	BackgroundColor $WARNING
+  	BorderColor $WARNING_DARK
+	FontColor $WARNING_TEXT
+}
+!endsub
+
+!startsub node
+
+skinparam node {
+	BackgroundColor  $SECONDARY
+	BorderColor $LIGHT
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub cloud
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor $DARK
+}
+!endsub
+
+!startsub database
+
+skinparam database {
+	$primary_scheme()
+}
+!endsub
+
+!startsub class
+
+skinparam class {
+	$primary_scheme()
+	HeaderBackgroundColor $PRIMARY_LIGHT
+	StereotypeFontColor $DARK
+	BorderThickness 1
+	AttributeFontColor $DARK
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub object
+
+skinparam object {
+	$primary_scheme()
+	StereotypeFontColor $DARK
+	BorderThickness 1
+	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub usecase
+
+skinparam usecase {
+	$primary_scheme()
+	BorderThickness 2
+	StereotypeFontColor $PRIMARY
+}
+!endsub
+
+!startsub rectangle
+
+skinparam rectangle {
+	$primary_scheme()
+	BackgroundColor $SECONDARY_LIGHT
+	BorderThickness 2
+	StereotypeFontColor $PRIMARY
+}
+!endsub
+
+!startsub package
+
+skinparam package {
+	BackgroundColor $SECONDARY
+  	BorderColor $PRIMARY
+	FontColor $PRIMARY
+	BorderThickness 2
+}
+!endsub
+
+!startsub folder
+
+skinparam folder {
+	BackgroundColor $SECONDARY_LIGHT
+  	BorderColor $WARNING
+	FontColor $WARNING
+	BorderThickness 2
+}
+!endsub
+
+!startsub frame
+
+skinparam frame {
+	BackgroundColor $SECONDARY_LIGHT
+  	BorderColor $INFO
+	FontColor $INFO
+	BorderThickness 2
+}
+!endsub
+
+!startsub state
+
+skinparam state {
+	$primary_scheme()
+	StartColor $INFO
+	EndColor $INFO
+	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontSize 11
+}
+!endsub
+
+!startsub queue
+
+skinparam queue {
+	$primary_scheme()
+}
+!endsub
+
+!startsub card
+
+skinparam card {
+	BackgroundColor $INFO
+	BorderColor $INFO_DARK
+	FontColor $INFO_TEXT
+}
+!endsub
+
+!startsub file
+
+skinparam file {
+	BackgroundColor $SECONDARY_DARK
+	BorderColor $LIGHT
+	FontColor $LIGHT
+}
+!endsub
+
+!startsub stack
+
+skinparam stack {
+	$primary_scheme()
+}
+!endsub
